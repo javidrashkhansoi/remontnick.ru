@@ -9468,10 +9468,90 @@ tabBlocks.forEach(block => {
 // import "./scripts/range.js";
 
 
-;// CONCATENATED MODULE: ./src/js/libraries/swiper/sliders/products.js
+;// CONCATENATED MODULE: ./src/js/libraries/swiper/sliders/collection.js
 const { swiper, } = window.__jr__;
-const { Swiper: products_Swiper, modules, } = swiper;
-const { Keyboard: products_Keyboard, Navigation: products_Navigation, Pagination: products_Pagination, } = modules;
+const { Swiper: collection_Swiper, modules, } = swiper;
+const { Keyboard: collection_Keyboard, Navigation: collection_Navigation, } = modules;
+
+
+/** @type {NodeListOf<HTMLDivElement>} */
+const collectionInners = document.querySelectorAll(".collection__inner");
+
+collectionInners.forEach(inner => {
+  const collectionSlider = inner.querySelector(".collection-slider");
+  const prevArrow = inner.querySelector(".slider-arrow--prev");
+  const nextArrow = inner.querySelector(".slider-arrow--next");
+
+  if (collectionSlider) {
+    const swiper = new collection_Swiper(collectionSlider, {
+      modules: [collection_Keyboard, collection_Navigation,],
+      keyboard: {
+        enabled: true,
+        pageUpDown: false,
+      },
+      navigation: {
+        enabled: true,
+        nextEl: nextArrow,
+        prevEl: prevArrow,
+      },
+      breakpoints: {
+        "992.1": {
+          slidesPerView: 5,
+          spaceBetween: 16,
+        }
+      },
+      slidesPerView: 4,
+      spaceBetween: 8,
+    });
+  }
+});
+
+;// CONCATENATED MODULE: ./src/js/libraries/swiper/sliders/objects.js
+const { swiper: objects_swiper, } = window.__jr__;
+const { Swiper: objects_Swiper, modules: objects_modules, } = objects_swiper;
+const { Keyboard: objects_Keyboard, Navigation: objects_Navigation, } = objects_modules;
+
+/** @type {NodeListOf<HTMLDivElement>} */
+const productsObjects = document.querySelectorAll(".product-objects");
+
+productsObjects.forEach(objects => {
+  const objectsSlider = objects.querySelector(".objects-slider");
+  const prevArrow = objects.querySelector(".slider-arrow--prev");
+  const nextArrow = objects.querySelector(".slider-arrow--next");
+
+  if (objectsSlider) {
+    const swiper = new objects_Swiper(objectsSlider, {
+      modules: [objects_Keyboard, objects_Navigation,],
+      keyboard: {
+        enabled: true,
+        pageUpDown: false,
+      },
+      navigation: {
+        enabled: true,
+        nextEl: nextArrow,
+        prevEl: prevArrow,
+      },
+      breakpoints: {
+        "600.1": {
+          slidesPerView: 2,
+        },
+        "900.1": {
+          slidesPerView: 3,
+        },
+        "1250.1": {
+          slidesPerView: 4,
+        },
+      },
+      slidesPerView: 1,
+      spaceBetween: 16,
+    });
+  }
+});
+
+;// CONCATENATED MODULE: ./src/js/libraries/swiper/sliders/products.js
+const { swiper: products_swiper, } = window.__jr__;
+const { Swiper: products_Swiper, modules: products_modules, } = products_swiper;
+const { Keyboard: products_Keyboard, Navigation: products_Navigation, Pagination: products_Pagination, } = products_modules;
 
 /** @type {NodeListOf<HTMLDivElement>} */
 const productsInners = document.querySelectorAll(".products__inner");
@@ -9551,49 +9631,8 @@ productsInners.forEach(inner => {
   }
 });
 
-;// CONCATENATED MODULE: ./src/js/libraries/swiper/sliders/objects.js
-const { swiper: objects_swiper, } = window.__jr__;
-const { Swiper: objects_Swiper, modules: objects_modules, } = objects_swiper;
-const { Keyboard: objects_Keyboard, Navigation: objects_Navigation, } = objects_modules;
-
-/** @type {NodeListOf<HTMLDivElement>} */
-const productsObjects = document.querySelectorAll(".product-objects");
-
-productsObjects.forEach(objects => {
-  const objectsSlider = objects.querySelector(".objects-slider");
-  const prevArrow = objects.querySelector(".slider-arrow--prev");
-  const nextArrow = objects.querySelector(".slider-arrow--next");
-
-  if (objectsSlider) {
-    const swiper = new objects_Swiper(objectsSlider, {
-      modules: [objects_Keyboard, objects_Navigation,],
-      keyboard: {
-        enabled: true,
-        pageUpDown: false,
-      },
-      navigation: {
-        enabled: true,
-        nextEl: nextArrow,
-        prevEl: prevArrow,
-      },
-      breakpoints: {
-        "600.1": {
-          slidesPerView: 2,
-        },
-        "900.1": {
-          slidesPerView: 3,
-        },
-        "1250.1": {
-          slidesPerView: 4,
-        },
-      },
-      slidesPerView: 1,
-      spaceBetween: 16,
-    });
-  }
-});
-
 ;// CONCATENATED MODULE: ./src/js/libraries/swiper/swiper.js
+
 
 
 
