@@ -966,6 +966,12 @@ button.swiper-pagination-bullet {
   flex: 0 0 auto;
   font-size: 0;
   color: #ffe0b2;
+  transition-property: color;
+  transition-duration: 0.3s;
+}
+
+.info-tabs__button.active .info-reviews__icon {
+  color: #fb8c00;
 }
 
 .product-about__item:not(:last-child) {
@@ -1197,27 +1203,15 @@ button.swiper-pagination-bullet {
 
 .reviews-buttons {
   display: grid;
-  grid-template-columns: auto 1fr auto;
   align-items: center;
   row-gap: 16px;
-  -moz-column-gap: 8px;
-  column-gap: 8px;
 }
 
 .reviews-show {
-  display: contents;
+  text-align: end;
   color: #999;
   transition-property: color;
   transition-duration: 0.3s;
-}
-
-@supports (grid-template-columns: subgrid) {
-  .reviews-show {
-    display: grid;
-    grid-template-columns: subgrid;
-    grid-column: 1/-1;
-    align-items: center;
-  }
 }
 
 .reviews-show__icon {
@@ -1709,6 +1703,26 @@ body {
     grid-template-columns: auto 1fr;
   }
 
+  .reviews-buttons {
+    grid-template-columns: auto 1fr auto;
+    -moz-column-gap: 8px;
+    column-gap: 8px;
+  }
+
+  .reviews-show {
+    display: contents;
+    text-align: start;
+  }
+
+@supports (grid-template-columns: subgrid) {
+    .reviews-show {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: 1/-1;
+      align-items: center;
+    }
+}
+
   .review-card {
     grid-template-columns: 1fr repeat(2, auto);
     grid-template-areas: "title time stars" "text text text";
@@ -1780,6 +1794,17 @@ body {
 
   .product-reviews__button {
     inline-size: 100%;
+  }
+
+  .reviews-show {
+    display: flex;
+    align-items: center;
+    -moz-column-gap: 8px;
+    column-gap: 8px;
+  }
+
+  .reviews-show__diagram {
+    flex: 1 1 auto;
   }
 
   .product-card__text {
