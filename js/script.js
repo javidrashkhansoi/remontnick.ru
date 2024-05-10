@@ -9449,7 +9449,7 @@ tabBlocks.forEach(block => {
         const { dataset } = tab;
         const { tab: currentTabData } = dataset;
 
-        tab.classList.toggle("product-tabs__button--active", tabData === currentTabData);
+        tab.classList.toggle("active", tabData === currentTabData);
       });
 
       panels.forEach(panel => {
@@ -9551,7 +9551,50 @@ productsInners.forEach(inner => {
   }
 });
 
+;// CONCATENATED MODULE: ./src/js/libraries/swiper/sliders/objects.js
+const { swiper: objects_swiper, } = window.__jr__;
+const { Swiper: objects_Swiper, modules: objects_modules, } = objects_swiper;
+const { Keyboard: objects_Keyboard, Navigation: objects_Navigation, } = objects_modules;
+
+/** @type {NodeListOf<HTMLDivElement>} */
+const productsObjects = document.querySelectorAll(".product-objects");
+
+productsObjects.forEach(objects => {
+  const objectsSlider = objects.querySelector(".objects-slider");
+  const prevArrow = objects.querySelector(".slider-arrow--prev");
+  const nextArrow = objects.querySelector(".slider-arrow--next");
+
+  if (objectsSlider) {
+    const swiper = new objects_Swiper(objectsSlider, {
+      modules: [objects_Keyboard, objects_Navigation,],
+      keyboard: {
+        enabled: true,
+        pageUpDown: false,
+      },
+      navigation: {
+        enabled: true,
+        nextEl: nextArrow,
+        prevEl: prevArrow,
+      },
+      breakpoints: {
+        "600.1": {
+          slidesPerView: 2,
+        },
+        "900.1": {
+          slidesPerView: 3,
+        },
+        "1250.1": {
+          slidesPerView: 4,
+        },
+      },
+      slidesPerView: 1,
+      spaceBetween: 16,
+    });
+  }
+});
+
 ;// CONCATENATED MODULE: ./src/js/libraries/swiper/swiper.js
+
 
 
 ;// CONCATENATED MODULE: ./src/js/libraries/libraries.js
