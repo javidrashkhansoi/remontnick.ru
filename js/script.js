@@ -9462,16 +9462,126 @@ tabBlocks.forEach(block => {
   });
 });
 
+;// CONCATENATED MODULE: ./src/js/scripts/scripts/counter.js
+/** @type {NodeListOf<HTMLElement>} */
+const counters = document.querySelectorAll(".counter");
+
+counters.forEach(counter => {
+  const { dataset } = counter;
+  let { min, max } = dataset;
+  const input = counter.querySelector("input");
+  /** @type {HTMLElement} */
+  const text = counter.querySelector(".counter__value");
+  /** @type {HTMLButtonElement} */
+  const plus = counter.querySelector(".counter__button--plus");
+  /** @type {HTMLButtonElement} */
+  const minus = counter.querySelector(".counter__button--minus");
+
+  min = min?.trim() ? +min.trim() : null;
+  max = max?.trim() ? +max.trim() : null;
+
+  if (input && text && plus && minus) {
+    plus.addEventListener("click", () => {
+      let { value } = input;
+
+      value = ++value;
+
+      if (max) {
+        value = max >= value ? value : max;
+      }
+
+      input.value = value;
+      text.innerText = value;
+    });
+
+    minus.addEventListener("click", () => {
+      let { value } = input;
+
+      value = --value;
+
+      if (min) {
+        value = min <= value ? value : min;
+      }
+
+      input.value = value;
+      text.innerText = value;
+    });
+  }
+});
+
 ;// CONCATENATED MODULE: ./src/js/scripts/scripts.js
 // import "./scripts/header-observers.js";
 // import "./scripts/burger.js";
 // import "./scripts/range.js";
 
 
-;// CONCATENATED MODULE: ./src/js/libraries/swiper/sliders/collection.js
+
+;// CONCATENATED MODULE: ./src/js/libraries/swiper/sliders/hero.js
 const { swiper, } = window.__jr__;
-const { Swiper: collection_Swiper, modules, } = swiper;
-const { Keyboard: collection_Keyboard, Navigation: collection_Navigation, } = modules;
+const { Swiper: hero_Swiper, modules, } = swiper;
+const { Keyboard: hero_Keyboard, Navigation: hero_Navigation, Scrollbar: hero_Scrollbar, Thumbs, } = modules;
+
+/** @type {NodeListOf<HTMLDivElement>} */
+const heroSliders = document.querySelectorAll(".product-hero__sliders");
+
+heroSliders.forEach(inner => {
+  const heroSlider = inner.querySelector(".hero-slider");
+  const heroThumbs = inner.querySelector(".hero-thumbs");
+  const scrollbar = inner.querySelector(".hero-slider__scrollbar");
+  const prevArrow = inner.querySelector(".slider-arrow--prev");
+  const nextArrow = inner.querySelector(".slider-arrow--next");
+
+  let thumbs;
+
+  if (heroThumbs) {
+    thumbs = new hero_Swiper(heroThumbs, {
+      direction: "vertical",
+      slidesPerView: 4,
+      spaceBetween: 16,
+    });
+  }
+
+  if (heroSlider) {
+    const swiper = new hero_Swiper(heroSlider, {
+      modules: [hero_Keyboard, hero_Navigation, hero_Scrollbar, Thumbs,],
+      keyboard: {
+        enabled: true,
+        pageUpDown: false,
+      },
+      navigation: {
+        enabled: true,
+        nextEl: nextArrow,
+        prevEl: prevArrow,
+      },
+      scrollbar: {
+        draggable: true,
+        el: scrollbar,
+        enabled: true,
+      },
+      thumbs: {
+        swiper: thumbs,
+      },
+      breakpoints: {
+        "500.1": {
+          slidesPerView: 2,
+        },
+        "768.1": {
+          slidesPerView: 1.2830,
+        },
+        "992.1": {
+          slidesPerView: 1,
+        },
+      },
+      slidesPerView: 1.2830,
+      spaceBetween: 16,
+    });
+  }
+});
+
+;// CONCATENATED MODULE: ./src/js/libraries/swiper/sliders/collection.js
+const { swiper: collection_swiper, } = window.__jr__;
+const { Swiper: collection_Swiper, modules: collection_modules, } = collection_swiper;
+const { Keyboard: collection_Keyboard, Navigation: collection_Navigation, } = collection_modules;
 
 
 /** @type {NodeListOf<HTMLDivElement>} */
@@ -9632,6 +9742,7 @@ productsInners.forEach(inner => {
 });
 
 ;// CONCATENATED MODULE: ./src/js/libraries/swiper/swiper.js
+
 
 
 
