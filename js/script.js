@@ -9527,10 +9527,21 @@ counters.forEach(counter => {
   }
 });
 
+;// CONCATENATED MODULE: ./src/js/scripts/scripts/action.js
+/** @type {NodeListOf<HTMLButtonElement>} */
+const actionButtons = document.querySelectorAll("[data-action]");
+
+actionButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    button.classList.toggle("active");
+  });
+});
+
 ;// CONCATENATED MODULE: ./src/js/scripts/scripts.js
 // import "./scripts/header-observers.js";
 // import "./scripts/burger.js";
 // import "./scripts/range.js";
+
 
 
 

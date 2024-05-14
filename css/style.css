@@ -910,12 +910,11 @@ button.swiper-pagination-bullet {
 
 .product-hero__arrow {
   position: absolute;
-  inset-inline: 0;
+  inset-inline: -1px;
   z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  inline-size: 100%;
   aspect-ratio: 1/1;
   transform: rotate(90deg);
   transition-property: opacity, visibility;
@@ -1086,6 +1085,14 @@ button.swiper-pagination-bullet {
   padding-inline: 4.5px;
   text-align: center;
   background-color: #f6f6f6;
+  border-block-end: 2px solid rgba(0, 0, 0, 0);
+  transition-property: border-color;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.hero-tooltips__item:has(.hero-tooltips-radio__input:checked) .tooltip {
+  border-block-end-color: currentColor;
 }
 
 .tooltip__icon {
@@ -1236,7 +1243,7 @@ button.swiper-pagination-bullet {
   transition-duration: 0.3s;
 }
 
-.action-button--active {
+.action-button.active {
   color: #ffb74d;
 }
 
@@ -1245,7 +1252,7 @@ button.swiper-pagination-bullet {
   font-size: 0;
 }
 
-.action-button:not(.action-button--active) .action-button__icon--no-fill svg {
+.action-button:not(.action-button.active) .action-button__icon--no-fill svg {
   fill: none;
 }
 
@@ -1979,7 +1986,7 @@ button.swiper-pagination-bullet {
   transition-duration: 0.3s;
 }
 
-.product-actions__icon--active {
+.product-actions__icon.active {
   color: #ffb74d;
 }
 
@@ -1988,7 +1995,7 @@ button.swiper-pagination-bullet {
   height: min(24px, 16px + 8 * ((100vw - 320px) / 1032));
 }
 
-.product-actions__icon--no-fill.product-actions__icon--active svg {
+.product-actions__icon--no-fill.product-actions__icon.active svg {
   fill: currentColor;
 }
 
@@ -2480,7 +2487,7 @@ body {
     color: #ffb74d;
   }
 
-  .action-button--active:hover {
+  .action-button.active:hover {
     color: #1d1d1d;
   }
 
@@ -2513,7 +2520,7 @@ body {
     color: #ffb74d;
   }
 
-  .product-actions__icon--active:hover {
+  .product-actions__icon.active:hover {
     color: #1d1d1d;
   }
 
