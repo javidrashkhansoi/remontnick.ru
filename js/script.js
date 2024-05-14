@@ -9430,6 +9430,24 @@ window.__jr__ = {
   // Choices,
 };
 
+;// CONCATENATED MODULE: ./src/js/scripts/scripts/tooltips.js
+const { body } = document;
+
+const bodyResizeObserver = new ResizeObserver(entries => {
+  entries.forEach(entry => {
+    /** @type {NodeListOf<HTMLLIElement>} */
+    const tooltipItems = document.querySelectorAll(".hero-tooltips__item");
+
+    tooltipItems.forEach(item => {
+      const itemLeft = item.getBoundingClientRect().left;
+
+      item.style.setProperty("--tooltip-left", `${itemLeft}px`);
+    });
+  });
+});
+
+bodyResizeObserver.observe(body);
+
 ;// CONCATENATED MODULE: ./src/js/scripts/scripts/tabs.js
 /** @type {NodeListOf<HTMLElement>} */
 const tabBlocks = document.querySelectorAll("[data-tabs]");
@@ -9513,6 +9531,7 @@ counters.forEach(counter => {
 // import "./scripts/header-observers.js";
 // import "./scripts/burger.js";
 // import "./scripts/range.js";
+
 
 
 

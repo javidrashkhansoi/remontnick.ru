@@ -946,7 +946,7 @@ button.swiper-pagination-bullet {
 }
 
 .product-hero__title {
-  margin-block-end: max(8px, 32px + -24 * ((100vw - 320px) / 1032));
+  margin-block-end: max(8px, 16px + -8 * ((100vw - 320px) / 1032));
 }
 
 .product-hero__content:not(:has(.product-hero__tooltips)) .product-hero__title {
@@ -1009,9 +1009,7 @@ button.swiper-pagination-bullet {
   display: flex;
   flex-wrap: wrap;
   align-items: end;
-  row-gap: 8px;
-  -moz-column-gap: 16px;
-  column-gap: 16px;
+  gap: 8px;
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1050,10 +1048,10 @@ button.swiper-pagination-bullet {
 .hero-tooltips__item::after {
   content: attr(data-tooltip);
   position: absolute;
-  inset-block-end: calc(100% + 6px);
-  inset-inline-start: 50%;
+  inset-block-end: calc(100% + 5px);
+  inset-inline-start: calc(-1 * var(--tooltip-left) + 16px);
   z-index: 1;
-  inline-size: 225px;
+  inline-size: calc(100vw - 32px);
   padding: 8px;
   font-size: 14px;
   line-height: 1.43;
@@ -1064,7 +1062,6 @@ button.swiper-pagination-bullet {
   border-radius: 4px;
   opacity: 0;
   visibility: hidden;
-  transform: translateX(-50%);
   transition-property: opacity, visibility;
   transition-duration: 0.3s;
   pointer-events: none;
@@ -2188,6 +2185,12 @@ body {
   .product-hero__sliders {
     margin-block-start: 13px;
     overflow: hidden;
+  }
+
+  .hero-tooltips__item::after {
+    inset-inline-start: 50%;
+    inline-size: 225px;
+    transform: translateX(-50%);
   }
 
   .hero-sum__item {
